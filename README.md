@@ -8,4 +8,29 @@
 </div>
 
 ## Description
-This is the official repository to the paper ["ZSIF-main: A Zero-shot Solar Irradiance Forecasting Model based on Satellite Images and Numerical Series"] by **Chunru Dong**\*, **Jiahong Tang**\*, **Feng Zhang**\*, **Qiang Hua**\*, **Boon-han Lim**\*.
+This is the official repository to the paper ["ZSIF-main: A Zero-shot Solar Irradiance Forecasting Model based on Satellite Images and Numerical Series"] by **Chunru Dong**, **Jiahong Tang**, **Feng Zhang**, **Qiang Hua**, **Boon-han Lim**.
+
+## Dataset
+The paper uses publicly available data provided by Boussif et al[Improving day-ahead Solar Irradiance Time Series Forecasting by Leveraging Spatio-Temporal Context]. We would like to thank them for their research.
+
+You can view the dataset [here](https://app.activeloop.ai/crossvivit/SunLake) and can you access it as follows:
+```python
+import deeplake
+
+ds = deeplake.load('hub://crossvivit/SunLake')
+```
+If you wish to download it you can do the following:
+```python
+import deeplake
+
+ds = deeplake.load('hub://crossvivit/SunLake')
+local_dataset = ds.copy('/path/to/local/storage', num_workers=4)
+```
+
+## Installation
+# install requirements
+pip install -r requirements.txt
+```
+
+## Experiments
+HYDRA_FULL_ERROR=1 python main.py experiment=exp_ZSIF
