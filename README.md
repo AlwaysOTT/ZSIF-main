@@ -28,7 +28,7 @@ local_dataset = ds.copy('/path/to/local/storage', num_workers=4)
 ```
 
 ## Installation
-# install requirements
+```bash
 pip install -r requirements.txt
 ```
 
