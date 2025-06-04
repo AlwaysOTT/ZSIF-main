@@ -1,0 +1,29 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /exp_main: ZSIF.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+exp_main:
+  dataloader:
+    batch_size: 32
+    num_workers: 16
+  model:
+    use_pretrain: True
+  scheduler:
+    t_initial: 8
+    lr_min: 1e-8
+    warmup_t: 0
+  optimizer:
+    lr: 14e-5
+
+multi_gpu: True
+devices: "0,1"
+world_size: null
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:33333

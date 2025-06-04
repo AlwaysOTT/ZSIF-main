@@ -1,0 +1,32 @@
+# @package _global_
+
+defaults:
+  - override /exp_main: ZSIF.yaml
+task_name: "test"
+train: False
+test: True
+
+multi_gpu: True
+devices: "0,1"
+world_size: null
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:33334
+
+exp_main:
+  dataloader:
+    dataset:
+      years:
+        test: [ "2017_nonhrv", "2018_nonhrv", "2019_nonhrv" ]
+      stations:
+        test: [ "PCCI_20082022_TAM"]
+#        test: [ "PCCI_20082022_IZA" ]
+
+    batch_size: 32
+    num_workers: 16
+  model:
+    use_pretrain: False
+    ctx_tubelet: 6
+  hyparams:
+    test_resume: ./ts_context_logs/ZSIF/train/2024-04-16_17-01-14/0/checkpoints
+#    test_resume: ./ts_context_logs/ZSIF/train/multiruns/2025-02-17_10-04-06/1/checkpoints
+    test_result: ${paths.output_dir}/test_result
